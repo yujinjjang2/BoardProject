@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>member-sql</comment>
+
+	<comment>member-sql</comment>
+	
+	<entry key="selectMyInfo">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NM, MEMBER_GENDER, TO_CHAR(ENROLL_DT, 'YYYYMMDD') ENROLL_DT, UNREGISTER_FL
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="selectMemberInfo">
+		SELECT MEMBER_ID, MEMBER_NM, MEMBER_GENDER
+		FROM MEMBER
+	</entry>
+	
+	<entry key="updateMyInfo">
+		UPDATE MEMBER SET 
+		MEMBER_NM = ?,
+		MEMBER_GENDER = ?
+		WHERE MEMBER_ID = ?
+	</entry>
+	
+	<entry key="updatePw">
+		UPDATE MEMBER SET 
+		MEMBER_PW = ?
+		WHERE MEMBER_ID = ?	
+	</entry>
+	
+	<entry key="withdraw">
+		UPDATE MEMBER SET 
+		UNREGISTER_FL = 'Y'
+		WHERE MEMBER_PW = ?
+	</entry>
+	
 </properties>

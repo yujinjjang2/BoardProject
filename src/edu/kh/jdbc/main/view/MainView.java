@@ -2,15 +2,22 @@ package edu.kh.jdbc.main.view;
 
 import java.util.Scanner;
 
+import edu.kh.jdbc.board.view.BoardView;
+import edu.kh.jdbc.board.view.CommentView;
 import edu.kh.jdbc.common.Session;
 import edu.kh.jdbc.main.model.service.MainService;
 import edu.kh.jdbc.member.model.dto.Member;
+import edu.kh.jdbc.member.view.MemberView;
 
 public class MainView {
 	
 	private Scanner sc = new Scanner(System.in);
 	
 	private MainService service = new MainService();
+	
+	private MemberView mView = new MemberView();
+	private BoardView bView = new BoardView();
+	private CommentView cView = new CommentView();
 	
 	/** 메인 메뉴 출력
 	 * 
@@ -72,12 +79,12 @@ public class MainView {
 						sc.nextLine();
 						
 						switch(input) {
-						case 1: selectMyInfo(); break;
-						case 2: selecetMemberInfo(); break;
-						case 3: updateMyInfo(); break;
-						case 4: updatePw(); break;
-						case 5: withdraw(); break;
-						case 9: System.out.println("\n=====메인 메뉴로 돌아갑니다=====\n");break;
+						case 1: mView.selectMyInfo(); break;
+						case 2: mView.selecetMemberInfo(); break;
+						case 3: mView.updateMyInfo(); break;
+						case 4: mView.updatePw(); break;
+						case 5: mView.withdraw(); break;
+						case 9: System.out.println("\n=====메인 메뉴로 돌아갑니다=====\n"); break;
 						case 0: System.out.println("\n=====프로그램 종료=====\n"); break;
 						default: System.out.println("\n*** 메뉴 번호만 입력해 주세요 ***\n");
 						}
@@ -100,7 +107,7 @@ public class MainView {
 						sc.nextLine();
 						
 						switch(input) {
-						case 1: break;
+						case 1: bView.selectBoardList(); break;
 						case 2: break;
 						case 3: break;
 						case 4: break;
@@ -134,88 +141,6 @@ public class MainView {
 		} while(input != 0);
 		
 	}
-
-
-	/** 회원 기능
-	 * 5. 회원 탈퇴(보안코드, 비밀번호, UPDATE)
-	 * 
-	 */
-	private void withdraw() {
-		
-		
-	}
-
-
-	/** 회원 기능
-	 * 4. 비밀번호 변경(현재 비밀번호, 새 비밀번호, 새 비밀번호 확인)
-	 * 
-	 */
-	private void updatePw() {
-		
-		
-	}
-
-
-	/** 회원 기능
-	 * 3. 내 정보 수정(이름, 성별)
-	 * 
-	 */
-	private void updateMyInfo() {
-		
-		
-	}
-
-
-	/** 회원 기능
-	 * 2. 회원 목록 조회(아이디, 이름, 성별)
-	 * 
-	 */
-	private void selecetMemberInfo() {
-		
-		
-	}
-
-
-	/** 회원 기능
-	 * 1. 내 정보 조회 : 내가 만들어봤는데 이해는 못했지만 구현은 된다 ..??? 뭔가 허접 . . . map으로 해야 하나..?
-	 * 
-	 */
-	private void selectMyInfo() {
-		System.out.println("\n[내 정보 조회]\n");
-		
-		System.out.print("아이디 : ");
-		String myId = sc.next();
-		
-		System.out.print("비밀번호 : ");
-		String myPw = sc.next();
-		
-		System.out.print("비밀번호 확인 : ");
-		String myPw2 = sc.next();
-		
-		try {
-			
-			if(myPw.equals(myPw2)) {
-				
-				Member member = service.selectMyInfo(myId);
-				
-				System.out.println(member);
-				System.out.println();
-				System.out.println("내 정보 조회 완료");
-				
-			} else {
-				
-				System.out.println("내 정보 조회 실패");
-				
-			}
-			
-			
-		} catch(Exception e) {
-			System.out.println("\n******내 정보 조회 중 예외 발생******\n");
-			e.printStackTrace();
-		}
-		
-	}
-
 
 	/** 로그인
 	 * 
@@ -288,7 +213,7 @@ public class MainView {
 				}
 				
 			} else {
-				System.out.println("회원가입 중 예외 발생");
+				System.out.println("입력한 비밀번호가 틀렸습니다.");
 			}
 		
 		} catch(Exception e) {

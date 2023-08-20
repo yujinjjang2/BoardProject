@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 
 import static edu.kh.jdbc.common.JDBCTemplate.*;
@@ -132,58 +133,5 @@ public class MainDAO {
 		
 		return result;
 	}
-
-	/**회원 기능
-	 * 1. 내 정보 조회 DAO
-	 * @param conn
-	 * @return
-	 */
-	public Member selectMyInfo(Connection conn, String myId) throws Exception{
-		
-		Member member = null;
-		
-		try {
-			
-			String sql = prop.getProperty("selectMyInfo");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, myId);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				
-				int memberNo = rs.getInt("MEMBER_NO");
-				String memberId = rs.getString("MEMBER_ID");
-				String memberPw = rs.getString("MEMBER_PW");
-				String memberNM = rs.getString("MEMBER_NM");
-				String memberGender = rs.getString("MEMBER_GENDER");
-				String enrollDt = rs.getString("ENROLL_DT");
-				String unregisterFl = rs.getString("UNREGISTER_FL");
-				
-				member = new Member();
-				
-				member.setMemberNo(memberNo);
-				member.setMemberId(memberId);
-				member.setMemberPw(memberPw);
-				member.setMemberName(memberNM);
-				member.setMemberGender(memberGender);
-				member.setEnrollDate(enrollDt);
-				member.setUpregisterFlag(unregisterFl);
-				
-			}
-			
-		} finally {
-			
-			close(rs);
-			close(pstmt);
-			
-		}
-		
-		return member;
-	}
-	
-	
 
 }

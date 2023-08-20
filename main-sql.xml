@@ -16,11 +16,5 @@
 	<entry key="signUp">
 		INSERT INTO MEMBER VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, DEFAULT, DEFAULT)
 	</entry>
-	
-	<entry key="selectMyInfo">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NM, MEMBER_GENDER, TO_CHAR(ENROLL_DT, 'YYYYMMDD') ENROLL_DT, UNREGISTER_FL
-		FROM MEMBER
-		WHERE MEMBER_ID = ?
-	</entry>
 
 </properties>

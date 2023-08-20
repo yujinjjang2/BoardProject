@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>board-sql</comment>
+
+	<comment>board-sql</comment>
+	
+	<entry key="selectBoardList">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, TO_CHAR(CREATE_DT, 'YYYYMMDD') CREATE_DT, READ_COUNT, DELETE_FL, MEMBER_NO
+		FROM BOARD
+	</entry>
+
 </properties>

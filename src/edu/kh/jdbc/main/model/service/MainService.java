@@ -1,6 +1,7 @@
 package edu.kh.jdbc.main.model.service;
 
 import java.sql.Connection;
+import java.util.List;
 
 import static edu.kh.jdbc.common.JDBCTemplate.*;
 import edu.kh.jdbc.main.model.dao.MainDAO;
@@ -41,19 +42,5 @@ public class MainService {
 		return result;
 	}
 
-	/** 회원 기능
-	 * 1. 내 정보 조회 서비스
-	 * @return
-	 */
-	public Member selectMyInfo(String myId) throws Exception{
-		
-		Connection conn = getConnection();
-		
-		Member member = dao.selectMyInfo(conn, myId);
-		
-		close(conn);
-		
-		return member;
-	}
 
 }
