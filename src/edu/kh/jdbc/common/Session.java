@@ -11,6 +11,6 @@ public class Session {
 	
 	// loginMember == null -> 로그아웃 상태
 	// loginMember != null -> 로그인 상태
-	public static int securityCode = 123456;
+//	public static int securityCode = 123456;
 	
 }

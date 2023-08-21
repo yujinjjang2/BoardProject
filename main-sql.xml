@@ -13,8 +13,21 @@
 		AND UNREGISTER_FL = 'N'
 	</entry>
 	
-	<entry key="signUp">
+	<!--<entry key="signUp">
 		INSERT INTO MEMBER VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, DEFAULT, DEFAULT)
+	</entry>-->
+	
+	<!-- 아이디 중복검사 -->
+	<entry key="idDuplicationCheck">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE UNREGISTER_FL = 'N'
+		AND MEMBER_ID = ?
+	</entry>
+	
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, DEFAULT, DEFAULT)
 	</entry>
 
 </properties>

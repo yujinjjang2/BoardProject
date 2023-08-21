@@ -31,11 +31,45 @@ public class MainService {
 		return member;
 	}
 	
-	public int signUp(Member member) throws Exception {
+//	public int signUp(Member member) throws Exception {
+//		
+//		Connection conn = getConnection();
+//		
+//		int result = dao.signUp(conn, member);
+//		
+//		close(conn);
+//		
+//		return result;
+//	}
+
+	/** 아이디 중복 검사 서비스
+	 * @param memberId
+	 * @return result
+	 */
+	public int idDuplicationCheck(String memberId) throws Exception{
 		
 		Connection conn = getConnection();
 		
-		int result = dao.signUp(conn, member);
+		int result = dao.idDuplicationCheck(conn, memberId);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 회원가입 서비스
+	 * @param member
+	 * @return
+	 */
+	public int signUp(Member member) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int result = dao.signUp(conn, member); // -> INSERT 수행
+		
+		// 트랜젝션 처리
+		if(result > 0) commit(conn);
+		else			rollback(conn);
 		
 		close(conn);
 		
