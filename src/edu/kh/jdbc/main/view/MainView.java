@@ -69,7 +69,6 @@ public class MainView {
 						
 						Session.loginMember = null;
 						// 참조하고 있던 로그인 회원 객체를 없앰
-						
 						break;
 						
 					case 0 : System.out.println("\n====프로그램 종료====\n");  break;
@@ -82,7 +81,6 @@ public class MainView {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 			
 		}while(input != 0);
 	}

@@ -127,7 +127,7 @@ public class MemberView {
 				System.out.println("\n==== 조회 결과가 없습니다 =====\n");
 			} else {
 				
-				for(int i=0; i<memberList.size(); i++) {
+				for(int i = 0; i < memberList.size(); i++) {
 					
 					System.out.printf("%d\t\t%s\t\t%s\t\t%s \n",
 							i+1,
@@ -137,6 +137,21 @@ public class MemberView {
 							);
 					
 				}
+				
+				System.out.println("-------------------------------------------");
+				
+				int count = 1;
+				
+				// 향상된 FOR문
+				for(Member mb : memberList) {
+					System.out.printf("%d\t\t%s\t\t%s\t\t%s \n",
+							count++,
+							mb.getMemberId(),
+							mb.getMemberName(),
+							mb.getMemberGender()
+							);
+				}
+				
 								
 			}
 			

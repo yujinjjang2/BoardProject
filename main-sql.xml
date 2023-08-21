@@ -26,8 +26,10 @@
 	
 	<!-- 회원가입 -->
 	<entry key="signUp">
-		INSERT INTO "MEMBER"
-		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, DEFAULT, DEFAULT)
+		<!-- INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, DEFAULT, DEFAULT) -->
+		INSERT INTO "MEMBER"(MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NM, MEMBER_GENDER)
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?)
 	</entry>
 
 </properties>

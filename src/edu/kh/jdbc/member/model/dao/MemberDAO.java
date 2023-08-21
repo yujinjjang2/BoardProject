@@ -61,12 +61,14 @@ public class MemberDAO {
 				String memberName = rs.getString("MEMBER_NM");
 				String memberGender = rs.getString("성별");
 				
-				Member member = new Member();
-				member.setMemberId(memberId);
-				member.setMemberName(memberName);
-				member.setMemberGender(memberGender);
+//				Member member = new Member();
+//				member.setMemberId(memberId);
+//				member.setMemberName(memberName);
+//				member.setMemberGender(memberGender);
+//				
+//				memberList.add(member);
 				
-				memberList.add(member);
+				memberList.add( new Member(memberId, memberName, memberGender) );
 			}
 			
 			
