@@ -77,7 +77,8 @@ public class MemberService {
 		// Service : 무조건 DAO로 가는 것이 아닌 필요한 함수를 모아두는 곳
 		//           이라고 생각하기
 		
-		StringBuffer code = new StringBuffer();
+//		StringBuffer code = new StringBuffer();
+		String code = "";
 		
 		// StringBuffer : 문자열을 추가/변경 할 때 주로 사용하는 자료형
 		// StringBuffer 자료형 append 메서드를 문자열을 추가할 수 있다.
@@ -86,7 +87,8 @@ public class MemberService {
 		
 		for(int i = 0; i < 6; i++) {
 			int x = ran.nextInt(10); // 0 이상 10 미만 정수 0 ~ 9
-			code.append(x); // [ 574021 ]
+//			code.append(x); // [ 574021 ]
+			code = code + x;
 		}
 		
 //		String str = "안녕";
@@ -96,8 +98,9 @@ public class MemberService {
 		// 메서드를 이용한 코드가 깔끔한 코드
 //		code.append("안녕");
 //		code.append("하세요");
-		
-		return code.toString();
+		System.out.println(code);
+//		return code.toString();
+		return code;
 	}
 
 

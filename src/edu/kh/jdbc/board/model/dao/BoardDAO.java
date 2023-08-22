@@ -297,7 +297,7 @@ public class BoardDAO {
 	 */
 	public List<Board> searchBoard(Connection conn, int condition, String query) throws Exception{
 		
-		List<Board> boardList = new ArrayList<>();
+		List<Board> boardList = new ArrayList<Board>();
 		
 		try {
 			String sql = prop.getProperty("searchBoard1")
