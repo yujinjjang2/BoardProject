@@ -2,6 +2,7 @@ package edu.kh.jdbc.member.model.service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Random;
 
 import static edu.kh.jdbc.common.JDBCTemplate.*;
 import edu.kh.jdbc.member.model.dao.MemberDAO;
@@ -39,6 +40,78 @@ public class MemberService {
 		int result = dao.updateMember(conn, memberName, memberGender, memberNo);
 		
 		// 트랜 잭션 처리
+		if(result > 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	/** 비밀번호 변경 서비스
+	 * @param current
+	 * @param newPw1
+	 * @param memberNo
+	 * @return result
+	 */
+	public int updatePassword(String current, String newPw1, int memberNo) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updatePassword(conn, current, newPw1, memberNo);
+		
+		if(result > 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	/** 숫자 6자리 보안코드 생성 서비스
+	 * @return
+	 */
+	public String createSecurityCode() {
+		// Service : 무조건 DAO로 가는 것이 아닌 필요한 함수를 모아두는 곳
+		//           이라고 생각하기
+		
+		StringBuffer code = new StringBuffer();
+		
+		// StringBuffer : 문자열을 추가/변경 할 때 주로 사용하는 자료형
+		// StringBuffer 자료형 append 메서드를 문자열을 추가할 수 있다.
+		
+		Random ran = new Random(); // 난수 생성 객체
+		
+		for(int i = 0; i < 6; i++) {
+			int x = ran.nextInt(10); // 0 이상 10 미만 정수 0 ~ 9
+			code.append(x); // [ 574021 ]
+		}
+		
+//		String str = "안녕";
+//		str += "하세여";
+//		str += " 안녕히가세요";
+		
+		// 메서드를 이용한 코드가 깔끔한 코드
+//		code.append("안녕");
+//		code.append("하세요");
+		
+		return code.toString();
+	}
+
+
+	/** 회원 탈퇴 서비스
+	 * @param memberPw
+	 * @param memberNo
+	 * @return
+	 */
+	public int unRegisterMember(String memberPw, int memberNo) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int result = dao.unRegisterMember(conn, memberPw, memberNo);
+		
 		if(result > 0) commit(conn);
 		else			rollback(conn);
 		
